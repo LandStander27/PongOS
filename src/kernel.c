@@ -18,7 +18,6 @@ int kernel_main() {
 	while (true) {
 
 		printf("> ");
-		char cmd[100];
 		getline(cmd);
 
 		if (starts_with(cmd, "echo")) {

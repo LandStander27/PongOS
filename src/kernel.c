@@ -20,7 +20,32 @@ int kernel_main() {
 		printf("> ");
 		char cmd[100];
 		getline(cmd);
-		printf("%s\n", cmd);
+
+		if (starts_with(cmd, "echo")) {
+			int len = str_len(cmd);
+			if (len > 5) {
+				if (cmd[4] == ' ') {
+					for (int i = 5; i < len; i++) {
+						printf("%c", cmd[i]);
+					}
+				}
+			}
+		} else if (starts_with(cmd, "help ")) {
+			printf(
+				"echo:   echoes all arguments passed to command\n"
+				"clear:  clears the screen\n"
+				"help:   display commands built into PongOS\n"
+				"start:  start the game"
+			);
+		} else if (starts_with(cmd, "clear ")) {
+			clear_screen();
+			set_cursor_pos(0, 0);
+			printf("PongOS\n");
+		} else {
+			printf("Could not find command\nUse `help` to view available commands");
+		}
+
+		printf("\n");
 
 	}
 

@@ -9,5 +9,6 @@ int str_len(const char *str);
 void reverse(char *str);
 bool starts_with(char *str, char *prefix);
 void strip_prefix(char *str, int prefix_len, char *stripped);
+bool str_cmp(char *str1, char *str2);
 
 #endif

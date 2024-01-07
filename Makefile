@@ -40,3 +40,4 @@ run:
 
 clean:
 	rm -rf temp
+	rm -rf bin

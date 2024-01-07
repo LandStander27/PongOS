@@ -30,7 +30,7 @@ void draw_rectangle(int x, int y, int w, int h, int color) {
 void clear_screen() {
 	volatile char *video = (volatile char*)0xB8000;
 
-	for (int i = 0; i < 1000; i++) {
+	for (int i = 0; i < 4000; i++) {
 		*video++ = ' ';
 		*video++ = 15;
 	}

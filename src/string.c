@@ -83,3 +83,12 @@ void repeat(char *str, char pattern, int times) {
 	}
 	str[str_len(str)] = '\0';
 }
+
+bool str_cmp(char *str1, char *str2) {
+	for (int i = 0; i < str_len(str1); i++) {
+		if (str1[i] != str2[i]) {
+			return false;
+		}
+	}
+	return true;
+}

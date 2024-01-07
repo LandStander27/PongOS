@@ -44,10 +44,11 @@ struct Keycode get_input() {
 			key.code = code;
 			if ((code & 128) == 128) {
 				key.action = Release;
+				key.code -= 128;
 			} else {
 				key.action = Press;
 			}
-			key.character = convert(code);
+			key.character = convert(key.code);
 			return key;
 		}
 	}
@@ -55,10 +56,11 @@ struct Keycode get_input() {
 	key.code = code;
 	if ((code & 128) == 128) {
 		key.action = Release;
+		key.code -= 128;
 	} else {
 		key.action = Press;
 	}
-	key.character = convert(code);
+	key.character = convert(key.code);
 	return key;
 }
 
@@ -71,9 +73,10 @@ struct Keycode get_input_instant() {
 	key.code = code;
 	if ((code & 128) == 128) {
 		key.action = Release;
+		key.code -= 128;
 	} else {
 		key.action = Press;
 	}
-	key.character = convert(code);
+	key.character = convert(key.code);
 	return key;
 }

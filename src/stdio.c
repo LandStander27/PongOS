@@ -5,6 +5,7 @@
 #include "bool.h"
 
 int cursor_pos = 0;
+int text_color = 15;
 
 int putchar(int pos, char c) {
 	volatile char *video = (volatile char*)0xB8000;
@@ -34,8 +35,12 @@ int putchar(int pos, char c) {
 
 	video += pos;
 	*video++ = c;
-	*video++ = 15;
+	*video++ = text_color;
 	return pos+2;
+}
+
+void set_color(int color) {
+	text_color = color;
 }
 
 int putstr(int pos, const char *str, int len) {

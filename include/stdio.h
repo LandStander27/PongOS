@@ -9,5 +9,6 @@ void up(int amount);
 void getline(char *str);
 void set_cursor_pos(int x, int y);
 int* get_cursor_pos();
+void set_color(int color);
 
 #endif

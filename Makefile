@@ -9,13 +9,13 @@ build:
 	gcc -O2 -m32 -Iinclude -c src/graphics.c -o temp/graphics.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 	gcc -O2 -m32 -Iinclude -c src/keyboard.c -o temp/keyboard.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 	gcc -O2 -m32 -Iinclude -c src/stdio.c -o temp/stdio.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
-	ld -m elf_i386 -T boot/linker.ld temp/kernel.o temp/string.o temp/port.o temp/graphics.o temp/keyboard.o temp/stdio.o temp/boot.o -o bin/Pong.bin -nostdlib
-	grub-file --is-x86-multiboot bin/Pong.bin
+	ld -m elf_i386 -T boot/linker.ld temp/kernel.o temp/string.o temp/port.o temp/graphics.o temp/keyboard.o temp/stdio.o temp/boot.o -o bin/PongOS.bin -nostdlib
+	grub-file --is-x86-multiboot bin/PongOS.bin
 
 	mkdir -p temp/isodir/boot/grub
-	cp bin/Pong.bin temp/isodir/boot/Pong.bin
+	cp bin/PongOS.bin temp/isodir/boot/PongOS.bin
 	cp boot/grub.cfg temp/isodir/boot/grub/grub.cfg
-	grub-mkrescue -o bin/Pong.iso temp/isodir
+	grub-mkrescue -o bin/PongOS.iso temp/isodir
 
 run:
 	mkdir -p temp
@@ -28,15 +28,15 @@ run:
 	gcc -O2 -m32 -Iinclude -c src/graphics.c -o temp/graphics.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 	gcc -O2 -m32 -Iinclude -c src/keyboard.c -o temp/keyboard.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 	gcc -O2 -m32 -Iinclude -c src/stdio.c -o temp/stdio.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
-	ld -m elf_i386 -T boot/linker.ld temp/kernel.o temp/string.o temp/port.o temp/graphics.o temp/keyboard.o temp/stdio.o temp/boot.o -o bin/Pong.bin -nostdlib
-	grub-file --is-x86-multiboot bin/Pong.bin
+	ld -m elf_i386 -T boot/linker.ld temp/kernel.o temp/string.o temp/port.o temp/graphics.o temp/keyboard.o temp/stdio.o temp/boot.o -o bin/PongOS.bin -nostdlib
+	grub-file --is-x86-multiboot bin/PongOS.bin
 
 	mkdir -p temp/isodir/boot/grub
-	cp bin/Pong.bin temp/isodir/boot/Pong.bin
+	cp bin/PongOS.bin temp/isodir/boot/PongOS.bin
 	cp boot/grub.cfg temp/isodir/boot/grub/grub.cfg
-	grub-mkrescue -o bin/Pong.iso temp/isodir
+	grub-mkrescue -o bin/PongOS.iso temp/isodir
 
-	qemu-system-x86_64 -cdrom bin/Pong.iso
+	qemu-system-x86_64 -cdrom bin/PongOS.iso
 
 clean:
 	rm -rf temp
